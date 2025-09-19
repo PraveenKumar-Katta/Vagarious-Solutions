@@ -86,21 +86,22 @@ const Navbar = ({setActiveTab}) => {
             theme ? "bg-black" : "bg-white"
           } shadow z-50 md:hidden  border-t border-gray-200`}
         >
+          <X size={28} onClick={()=>setIsOpen(false)} className="m-2" />
           <nav className="flex flex-col items-center gap-4 py-6 text-lg">
             {["Home", "About us", "Services", "Careers", "Contact us"].map(
               (item) => (
                 <h1
                   key={item}
                   className="font-semibold cursor-pointer px-4 py-2 rounded hover:bg-gray-200 w-full text-center transition"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    setIsOpen(false)
+                    setActiveTab(item)
+                  }}
                 >
                   {item}
                 </h1>
               )
             )}
-            <button className="px-5 py-2 rounded bg-blue-500 text-white text-lg font-semibold hover:bg-blue-700 transition">
-              Apply Here
-            </button>
             <button
               onClick={() => setTheme(!theme)}
               className={`w-16 h-8 flex items-center rounded-full p-1 transition-all duration-500 
